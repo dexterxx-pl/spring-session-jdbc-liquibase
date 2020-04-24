@@ -25,7 +25,7 @@ Should be compatible with all database engines [supported by Liquibase](https://
 
 Tested only with PostgreSQL and H2.
 
-Blob type insired from original Spring sources.
+Blob type inspired from original Spring sources.
 
 ## How to use (Spring Boot example)
 
@@ -35,6 +35,8 @@ Blob type insired from original Spring sources.
     spring.session.store-type=jdbc
     spring.session.jdbc.initialize-schema=never
     ```
+   Or use dedicated annotation `@EnableJdbcHttpSession` with its properties on your configuration bean.
+   
    Remember that you need to have defined `spring.datasource`. Obvious. 
 1. Make sure you have defined dependencies in `pom.xml`:
     ```xml
@@ -48,9 +50,15 @@ Blob type insired from original Spring sources.
     </dependency>
    ```
    Yes, `spring-session-jdbc` is mandatory.
-1. (optional, suggested) Put `@EnableJdbcHttpSession` on your preferred Configuration bean/class.
-
-    Not sure why and I didn't checked, but without that It also works.
     
 1. Done. Run app and test. If doesn't work make sure you'd recompiled project /
 cleared caches / killed jdk processes or reinstalled OS. GL.  
+
+## Customized table name
+
+1. Use text editor and find'n'replace all `spring_session` to your needed name, eg. `eggroll`
+1. Remember to set configuration of your fetish:
+    ```properties
+    spring.session.jdbc.table-name=eggroll
+    ```
+   or `@EnableJdbcHttpSession(tableName = "eggroll")`

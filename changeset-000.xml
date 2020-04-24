@@ -18,7 +18,7 @@
     <property name="attr_byte_type" value="IMAGE" dbms="mssql"/>
     <property name="attr_byte_type" value="IMAGE" dbms="sybase"/>
 
-    <changeSet id="0000" author="dexterxx">
+    <changeSet id="000" author="dexterxx">
 
         <createTable tableName="spring_session">
             <column name="primary_id" type="CHAR(36)">
